@@ -5,19 +5,27 @@
 ## Login   <chambo_e@epitech.net>
 ## 
 ## Started on  Wed Mar 11 03:25:48 2015 Emmanuel Chambon
-## Last update Wed Mar 11 04:29:52 2015 Emmanuel Chambon
+## Last update Fri Mar 13 23:06:13 2015 Emmanuel Chambon
 ##
 
 ASM		=	nasm
 
 CC		=	gcc
 
-CFLAGS		=	-shared
+CFLAGS		=	-W -Wall -Wextra
+
+LDFLAGS		=	-shared
 
 SRC_DIR		=	src
 
 SRC 		=	$(SRC_DIR)/rindex.s	\
 			$(SRC_DIR)/strlen.s	\
+			$(SRC_DIR)/strchr.s	\
+			$(SRC_DIR)/strcmp.s	\
+			$(SRC_DIR)/strpbrk.s	\
+			$(SRC_DIR)/memcpy.s	\
+			$(SRC_DIR)/strncmp.s	\
+			$(SRC_DIR)/putchar.s	\
 			$(SRC_DIR)/memset.s
 
 OBJ		=	$(SRC:.s=.o)
@@ -32,10 +40,10 @@ TEST_NAME	=	test
 			${ASM} $< ${ASMFLAGS} -o $@
 
 ${NAME}		:	$(OBJ)
-			$(CC) $(CFLAGS) -o $(NAME) $(OBJ)
+			$(CC) $(LDFLAGS) -o $(NAME) $(OBJ)
 
 test		:	$(OBJ)
-			$(CC) main.c $(OBJ) -o $(TEST_NAME)
+			$(CC) $(CFLAGS) $(OBJ) main.c -o $(TEST_NAME)
 
 all		:	${NAME}
 

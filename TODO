@@ -1,0 +1,4 @@
+memmove
+strcasecmp
+strstr
+strcspn

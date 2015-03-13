@@ -1,25 +1,24 @@
 [BITS 64]
 
-	global memset
+	global my_memset:function
 
 	section .text
 
-memset:
+my_memset:
 
 	push rbp
 	mov rbp, rsp
 
 	mov rax, rdi
-	mov r8, rdi
 	
 loop_memset:
 	cmp rdx, 0	
-	je end_memset
+	jle end_memset
 
-	mov byte[r8], sil
+	mov byte[rdi], sil
 
 	dec rdx		
-	inc r8
+	inc rdi
 	
 	jmp loop_memset
 

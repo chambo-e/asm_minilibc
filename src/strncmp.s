@@ -1,15 +1,15 @@
 [BITS 64]
 
-	global my_strncmp:function
-
+	global strncmp:function
 	section .text
 
-my_strncmp:
+strncmp:
 	push rbp
 	mov rbp, rsp
 
 	mov rax, 0
 	mov rcx, rdx
+
 	jmp strncmp_loop
 
 match_strncmp:
@@ -24,9 +24,15 @@ strncmp_loop:
 	mov r10b, byte[rdi]
 	mov r11b, byte[rsi]
 
+	cmp r10b, 0
+	je sub_strncmp
+	cmp r11b, 0
+	je sub_strncmp
+
 	cmp r10b, r11b
 	je match_strncmp
 
+sub_strncmp:	
 	mov r8b, byte[rdi]
 	mov r9b, byte[rsi]
 	sub r8b, r9b

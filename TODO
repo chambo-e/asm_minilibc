@@ -1,4 +1,3 @@
 memmove
 strcasecmp
 strstr
-strcspn

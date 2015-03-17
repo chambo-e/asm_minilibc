@@ -1,9 +1,9 @@
 [BITS 64]
-	global my_putchar:function
 
+	global putchar:function
 	section .text
 
-my_putchar:
+putchar:
 	push rbp
 	mov rbp, rsp
 

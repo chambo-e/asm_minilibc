@@ -1,19 +1,18 @@
 [BITS 64]
 
-	global my_rindex:function
-	extern my_strlen
+	global rindex:function
+	extern strlen
 
 	section .text
 
-my_rindex:
-
+rindex:
 	push rbp
 	mov rbp, rsp
 
 	push rsi		; push rsi dans la stack
 	push rdi		; push rdi dans la stack
 
-	call my_strlen wrt ..plt	 	; strlen(rdi)
+	call strlen wrt ..plt	 	; strlen(rdi)
 	mov rcx, rax		; mets le return de strlen dans rcx
 	dec rcx			; rcx --
 
@@ -21,15 +20,14 @@ my_rindex:
 	pop rsi			; pop de la stack rsi
 
 loop_rindex:
-
 	cmp rcx, 0		; if rcx == 0
-		jle end_rindex_error ; error
+	jle end_rindex_error ; error
 
 	mov r8, rdi		; move rdi dans une registre temporaire
 	add r8, rcx		; ajoute rcx à *r8
 
 	cmp byte[r8], sil	; if (r8[rcx] == arg2)
-		je end_rindex	; valid
+	je end_rindex	; valid
 
 	dec rcx			; rcx --
 

@@ -5,7 +5,7 @@
 ## Login   <chambo_e@epitech.net>
 ## 
 ## Started on  Wed Mar 11 03:25:48 2015 Emmanuel Chambon
-## Last update Fri Mar 13 23:06:13 2015 Emmanuel Chambon
+## Last update Tue Mar 17 23:51:11 2015 Emmanuel Chambon
 ##
 
 ASM		=	nasm
@@ -21,12 +21,12 @@ SRC_DIR		=	src
 SRC 		=	$(SRC_DIR)/rindex.s	\
 			$(SRC_DIR)/strlen.s	\
 			$(SRC_DIR)/strchr.s	\
-			$(SRC_DIR)/strcmp.s	\
 			$(SRC_DIR)/strpbrk.s	\
-			$(SRC_DIR)/memcpy.s	\
+			$(SRC_DIR)/strcspn.s	\
+			$(SRC_DIR)/strcmp.s	\
 			$(SRC_DIR)/strncmp.s	\
-			$(SRC_DIR)/putchar.s	\
-			$(SRC_DIR)/memset.s
+			$(SRC_DIR)/memset.s	\
+			$(SRC_DIR)/memcpy.s
 
 OBJ		=	$(SRC:.s=.o)
 

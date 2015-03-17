@@ -1,11 +1,9 @@
 [BITS 64]
 
-	global my_memset:function
-
+	global memset:function
 	section .text
 
-my_memset:
-
+memset:
 	push rbp
 	mov rbp, rsp
 
@@ -23,10 +21,7 @@ loop_memset:
 	jmp loop_memset
 
 end_memset:
-
 	mov rsp, rbp
 	pop rbp
 
 	ret
-	
-	

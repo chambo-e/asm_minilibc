@@ -1,25 +1,23 @@
 [BITS 64]
 
-	global my_strlen:function
-
+	global strlen:function
 	section .text
 
-my_strlen:
+strlen:
 	push rbp
-	mov rbp, rsp
+	mov rbp, rsp	
 
 	mov rcx, 0
 
-strlen_loop:
+loop:
 	cmp byte[rdi], 0
-	jle strlen_end
+	je end
 	inc rcx
 	inc rdi
-	jmp strlen_loop
+	jmp loop
 	
-strlen_end:
+end:
 	mov rax, rcx
-
 	mov rsp, rbp
 	pop rbp
 

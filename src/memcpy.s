@@ -1,33 +1,33 @@
 [BITS 64]
 
-	global my_memcpy:function
-
+	global memcpy:function
 	section .text
 
-my_memcpy:
-
+memcpy:
 	push rbp
 	mov rbp, rsp
 
-	mov rax, rsi
+	mov rcx, 0
+	mov rax, rdi
 	
-loop_memcpy:
-	cmp rdx, 0
-	jle end_memcpy
+memcpy_loop:
+	cmp rdi, rsi
+	je memcpy_end
 
-	mov sil, byte[rdi]
+	cmp rcx, rdx
+	jge memcpy_end
+	
+	mov r8b, [rsi]
+	mov [rdi], r8b
 
-	dec rdx		
-	inc rsi
 	inc rdi
+	inc rsi
+	inc rcx
+
+	jmp memcpy_loop
 	
-	jmp loop_memcpy
-
-end_memcpy:
-
+memcpy_end:
 	mov rsp, rbp
 	pop rbp
 
 	ret
-	
-	

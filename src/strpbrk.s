@@ -1,9 +1,9 @@
 [BITS 64]
-	global my_strpbrk:function
 
+	global strpbrk:function
 	section .text
 	
-my_strpbrk:
+strpbrk:
 	push rbp
 	mov rbp, rsp
 
@@ -44,4 +44,3 @@ strpbrk_end:
 	pop rbp
 
 	ret
-	

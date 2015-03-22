@@ -5,7 +5,7 @@
 ## Login   <chambo_e@epitech.net>
 ## 
 ## Started on  Wed Mar 11 03:25:48 2015 Emmanuel Chambon
-## Last update Tue Mar 17 23:51:11 2015 Emmanuel Chambon
+## Last update Sun Mar 22 07:20:41 2015 Emmanuel Chambon
 ##
 
 ASM		=	nasm
@@ -24,8 +24,14 @@ SRC 		=	$(SRC_DIR)/rindex.s	\
 			$(SRC_DIR)/strpbrk.s	\
 			$(SRC_DIR)/strcspn.s	\
 			$(SRC_DIR)/strcmp.s	\
+			$(SRC_DIR)/strstr.s	\
 			$(SRC_DIR)/strncmp.s	\
+			$(SRC_DIR)/strcasecmp.s	\
 			$(SRC_DIR)/memset.s	\
+			$(SRC_DIR)/memmove.s	\
+			$(SRC_DIR)/putchar.s	\
+			$(SRC_DIR)/putstr.s	\
+			$(SRC_DIR)/exit.s	\
 			$(SRC_DIR)/memcpy.s
 
 OBJ		=	$(SRC:.s=.o)
@@ -34,16 +40,11 @@ ASMFLAGS	=	-f elf64
 
 NAME		=	libasm.so
 
-TEST_NAME	=	test
-
 %.o:			%.s
 			${ASM} $< ${ASMFLAGS} -o $@
 
 ${NAME}		:	$(OBJ)
 			$(CC) $(LDFLAGS) -o $(NAME) $(OBJ)
-
-test		:	$(OBJ)
-			$(CC) $(CFLAGS) $(OBJ) main.c -o $(TEST_NAME)
 
 all		:	${NAME}
 
@@ -52,6 +53,5 @@ clean		:
 
 fclean		:	clean
 			rm -f $(NAME)
-			rm -f $(TEST_NAME)
 
 re		:	fclean ${NAME}

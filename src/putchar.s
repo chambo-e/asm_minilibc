@@ -7,16 +7,17 @@ putchar:
 	push rbp
 	mov rbp, rsp
 
-	push rdi
+	mov [r8], rdi
 	
 	mov rax, 1		; syscall
+	mov rsi, r8		; char
 	mov rdi, 1		; fd
-	mov rsi, [rsp + 16]		; char
 	mov rdx, 1 		; length
 	syscall
 
-end:
-	mov al, byte[rbp + 8]
+	mov r9, 0
+	
+	mov [r8], r9 
 
 	mov rsp, rbp
 	pop rbp
